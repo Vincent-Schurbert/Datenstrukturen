@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Datenstrukturen
 {
@@ -18,6 +20,7 @@ namespace Datenstrukturen
             BeispielListe.Add(8);
             BeispielListe.Add(9);
             BeispielListe.Add(10);
+            BeispielListe.Add(1);
             BeispielListe.Add(11);
             BeispielListe.Add(12);
 
@@ -46,7 +49,14 @@ namespace Datenstrukturen
             Console.WriteLine("-----");
             Console.WriteLine("Count: " + BeispielListe.Count());
             Console.WriteLine("-----");
-            Console.WriteLine("Contains:" + BeispielListe.Contains(21));
+            Console.WriteLine("Contains: " + BeispielListe.Contains(20));
+            Console.WriteLine("----");
+            Console.WriteLine("IndexOf: " + BeispielListe.IndexOf(1));
+            Console.WriteLine("----");
+            Console.WriteLine("IndexOf mit 2 Parametern: " + BeispielListe.IndexOf(1, 8));
+            BeispielListe.ToArray();
+
+
         }
     }
 }

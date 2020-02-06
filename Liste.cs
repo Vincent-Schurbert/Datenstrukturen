@@ -58,25 +58,85 @@ namespace Datenstrukturen
         {
             
             bool IstEnthalten = false;
+            var Start = First;
 
-            while (First.Right != null)
+            while (Start.Right != null)
             {
-                var ListenWert = First.Value;
+                var ListenWert = Start.Value;
 
                 if (ListenWert.Equals(Wert))
                 {
                     IstEnthalten = true;
                     break;
                 }
-                First = First.Right;
+                Start = Start.Right;
             }
 
             return IstEnthalten;
         }
 
-        public void Exists()
+        public int IndexOf(T Wert)
         {
+            int Index = 0;
+            var Start = First;
 
+            while (Start != null)
+            {
+                if (Start.Value.Equals(Wert))
+                    return Index;
+                else
+                {
+                    Start = Start.Right;
+                    Index++;
+                }
+            }
+            return - 1;
+        }
+
+        public int IndexOf(T Wert, int Index)
+        {
+            var Start = First;
+            var hilfe = 0;
+
+            while (hilfe < Index)
+            {
+                Start = Start.Right;
+                hilfe++;
+            }
+
+            while (Index <= Count() - 1)
+            {
+                if (Start.Value.Equals(Wert))
+                    return Index;
+                else
+                {
+                    Start = Start.Right;
+                    Index++;
+                }
+            }
+            return -1;
+        }
+        public T[] ToArray() //Funktioniert noch nicht
+        {
+            T[] Ergebnis = new T[Count()];
+            var Start = First;
+
+            for (int i = 0; i < Count(); i++)
+            {
+                Ergebnis[i] = Start.Value;
+                Start = Start.Right;
+            }
+            return Ergebnis;
+        }
+
+        public void Remove(T Item)
+        {
+            var Start = First;
+
+            while (Start != null)
+            {
+
+            }
         }
 
         public void Display()
