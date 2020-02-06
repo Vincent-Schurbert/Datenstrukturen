@@ -7,6 +7,7 @@ namespace Datenstrukturen
     {
         Knoten<T> First;
         Knoten<T> Last;
+        
 
         public int Count()
         {
@@ -132,10 +133,24 @@ namespace Datenstrukturen
         public void Remove(T Item)
         {
             var Start = First;
+            var Hilfszähler = First.Right;
 
             while (Start != null)
             {
-
+                if (Start.Value.Equals(Item))
+                {
+                    Start = Start.Left;
+                    Start.Right = Hilfszähler;
+                    break;
+                }
+                else
+                {
+                    Start = Start.Right;
+                    if (Hilfszähler != null)
+                    {
+                        Hilfszähler = Hilfszähler.Right;
+                    }
+                }
             }
         }
 
