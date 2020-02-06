@@ -45,7 +45,10 @@ namespace Datenstrukturen
             BeispielListe.AddRange(AddStrings);
 
             BeispielListe.Remove(1);
+            BeispielListe.RemoveAt(15); 
             BeispielListe.Display();
+
+
 
             Console.WriteLine("-----");
             Console.WriteLine("Count: " + BeispielListe.Count());
@@ -56,10 +59,14 @@ namespace Datenstrukturen
             Console.WriteLine("----");
             Console.WriteLine("IndexOf mit 2 Parametern: " + BeispielListe.IndexOf(1, 8));
             Console.WriteLine("----");
+            BeispielListe.ToArray();
+
+
+            //-----------CLEAR------------------------
             BeispielListe.Clear();
             Console.WriteLine("Count nach Clear: " + BeispielListe.Count());
 
-            BeispielListe.ToArray();
+
 
 
         }

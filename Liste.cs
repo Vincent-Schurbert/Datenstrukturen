@@ -7,7 +7,7 @@ namespace Datenstrukturen
     {
         Knoten<T> First;
         Knoten<T> Last;
-        
+
 
         public int Count()
         {
@@ -21,7 +21,7 @@ namespace Datenstrukturen
             }
             return Zähler;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public void Add(T NewNode)
         {
             if (First == null)
@@ -38,7 +38,7 @@ namespace Datenstrukturen
                 Last = add;
             }
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public void AddRange(Liste<T> AListe)
         {
             var Help = AListe.First;
@@ -49,15 +49,15 @@ namespace Datenstrukturen
                 Help = Help.Right;
             }
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public void Clear()
         {
             First = Last = null;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public bool Contains(T Wert)
         {
-            
+
             bool IstEnthalten = false;
             var Start = First;
 
@@ -75,7 +75,7 @@ namespace Datenstrukturen
 
             return IstEnthalten;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public int IndexOf(T Wert)
         {
             int Index = 0;
@@ -91,9 +91,9 @@ namespace Datenstrukturen
                     Index++;
                 }
             }
-            return - 1;
+            return -1;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public int IndexOf(T Wert, int Index)
         {
             var Start = First;
@@ -117,7 +117,8 @@ namespace Datenstrukturen
             }
             return -1;
         }
-        public T[] ToArray() //Funktioniert noch nicht
+        //------------------------------------------------------------------------------------------------------------------------
+        public T[] ToArray()
         {
             T[] Ergebnis = new T[Count()];
             var Start = First;
@@ -129,27 +130,64 @@ namespace Datenstrukturen
             }
             return Ergebnis;
         }
-
+        //------------------------------------------------------------------------------------------------------------------------
         public void Remove(T Item)
         {
             var Start = First;
             var Hilfszähler = First.Right;
 
+            if (Start.Value.Equals(Item))
+            {
+                First = First.Right;
+                return;
+            }
+
             while (Start != null)
             {
                 if (Start.Value.Equals(Item))
                 {
-                    Start = Start.Left;
-                    Start.Right = Hilfszähler;
+                    Start.Left.Right = Start.Right;
+                    Start.Right.Left = Start.Left;
                     break;
                 }
                 else
                 {
                     Start = Start.Right;
-                    if (Hilfszähler != null)
+                }
+            }
+        }
+        //------------------------------------------------------------------------------------------------------------------------
+        public void RemoveAt(int Index)
+        {
+            var Counter = 0;
+            var Start = First;
+
+            if (Index == 0)
+            {
+                First = First.Right;
+                return;
+            }
+
+            if (Index < Count())
+            {
+                while (Counter <= Index)
+                {
+                    if (Counter == Index)
                     {
-                        Hilfszähler = Hilfszähler.Right;
+
+                        Start.Left.Right = Start.Right;
+                        
+                        if (Counter < Count() - 1)
+                        {
+                            Start.Right.Left = Start.Left;
+                        }
+
                     }
+                    else
+                    {
+                        Start = Start.Right;
+                    }
+                    Counter++;
                 }
             }
         }
@@ -169,5 +207,6 @@ namespace Datenstrukturen
                 Start = Start.Right;
             }
         }
+
     }
 }
