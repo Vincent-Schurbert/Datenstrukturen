@@ -45,7 +45,7 @@ namespace Datenstrukturen
             BeispielListe.AddRange(AddStrings);
 
             BeispielListe.Remove(1);
-            BeispielListe.RemoveAt(15); 
+            BeispielListe.RemoveAt(25); 
             BeispielListe.Display();
 
 

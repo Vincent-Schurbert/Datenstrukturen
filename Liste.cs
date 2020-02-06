@@ -162,35 +162,35 @@ namespace Datenstrukturen
             var Counter = 0;
             var Start = First;
 
-            if (Index == 0)
+            if (Index == 0) // Für den Fall das Index 0 gelöscht werden soll
             {
                 First = First.Right;
                 return;
             }
 
-            if (Index < Count())
+            if (Index == Count() - 1)
+            {
+                Last = Last.Left;
+                Last.Right = null;
+            }
+
+            if (Index < Count() - 1)
             {
                 while (Counter <= Index)
                 {
                     if (Counter == Index)
                     {
-
                         Start.Left.Right = Start.Right;
-                        
-                        if (Counter < Count() - 1)
-                        {
-                            Start.Right.Left = Start.Left;
-                        }
-
+                        Start.Right.Left = Start.Left;
                     }
                     else
-                    {
                         Start = Start.Right;
-                    }
+
                     Counter++;
                 }
             }
         }
+        //------------------------------------------------------------------------------------------------------------------------
 
         public void Display()
         {
