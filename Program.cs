@@ -6,9 +6,16 @@ namespace Datenstrukturen
 {
     class Program
     {
+        public bool Larger(int Zahl)
+        {
+            if (Zahl > 11)
+                return true;
+            else
+                return false;
+        }
         static void Main(string[] args)
         {
-            Liste<object> BeispielListe = new Liste<object>();
+            Liste<int> BeispielListe = new Liste<int>();
             BeispielListe.Add(0);
             BeispielListe.Add(1);
             BeispielListe.Add(2);
@@ -24,28 +31,29 @@ namespace Datenstrukturen
             BeispielListe.Add(11);
             BeispielListe.Add(12);
 
-            Liste<object> AddInteger = new Liste<object>();
+            Liste<int> AddInteger = new Liste<int>();
             AddInteger.Add(13);
             AddInteger.Add(14);
             AddInteger.Add(15);
+            AddInteger.Add(7);
             AddInteger.Add(16);
             AddInteger.Add(17);
             AddInteger.Add(18);
             AddInteger.Add(19);
             AddInteger.Add(20);
 
-            Liste<object> AddStrings = new Liste<object>();
-            AddStrings.Add("Hi");
-            AddStrings.Add("das");
-            AddStrings.Add("ist");
-            AddStrings.Add("ein");
-            AddStrings.Add("Test");
+            //Liste<string> AddStrings = new Liste<string>();
+            //AddStrings.Add("Hi");
+            //AddStrings.Add("das");
+            //AddStrings.Add("ist");
+            //AddStrings.Add("ein");
+            //AddStrings.Add("Test");
 
             BeispielListe.AddRange(AddInteger);
-            BeispielListe.AddRange(AddStrings);
+            //BeispielListe.AddRange(AddStrings);
 
-            BeispielListe.Remove(1);
-            BeispielListe.RemoveAt(25); 
+            BeispielListe.Remove(12);
+            BeispielListe.RemoveAt(0); 
             BeispielListe.Display();
 
 
@@ -61,9 +69,30 @@ namespace Datenstrukturen
             Console.WriteLine("----");
             BeispielListe.ToArray();
 
+            Program p = new Program();
+            Predicate<int> predicate;
+            predicate = p.Larger;
+            Console.WriteLine("Exists: " + BeispielListe.Exists(predicate));
+            Console.WriteLine("----");
+
+            Console.WriteLine("Find: " + BeispielListe.Find(predicate));
+            Console.WriteLine("----");
+
+            Console.WriteLine("FindAll: ");
+            BeispielListe.FindAll(predicate);
+
+            Console.WriteLine("----");
+            Console.WriteLine("FindIndex: " + BeispielListe.FindIndex(predicate));
+
+            Console.WriteLine("----");
+            Console.WriteLine("FindIndex mit zwei Parametern: " + BeispielListe.FindIndex(predicate, 15));
+
+
+
 
             //-----------CLEAR------------------------
             BeispielListe.Clear();
+            Console.WriteLine("----");
             Console.WriteLine("Count nach Clear: " + BeispielListe.Count());
 
 

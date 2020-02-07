@@ -76,6 +76,99 @@ namespace Datenstrukturen
             return IstEnthalten;
         }
         //------------------------------------------------------------------------------------------------------------------------
+        public bool Exists(Predicate<T> predicate)
+        {
+            var Start = First;
+
+            while (Start != null)
+            {
+                if (predicate(Start.Value))
+                    return true;
+                Start = Start.Right;
+            }
+            return false;
+        }
+        //------------------------------------------------------------------------------------------------------------------------
+        public T Find(Predicate<T> predicate)
+        {
+            var Start = First;
+            while (Start != null)
+            {
+                if (predicate(Start.Value))
+                    return Start.Value;
+                Start = Start.Right;
+            }
+            return default;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public Liste<T> FindAll(Predicate<T> predicate)
+        {
+            var Start = First;
+            Liste<T> TrefferListe = new Liste<T>();
+
+            while (Start != null)
+            {
+                if (predicate(Start.Value))
+                {
+                    TrefferListe.Add(Start.Value);
+                    Start = Start.Right;
+                }
+                else
+                    Start = Start.Right;
+            }
+            TrefferListe.Display();
+            return TrefferListe;
+        }
+        //------------------------------------------------------------------------------------------------------------------------
+        public int FindIndex(Predicate<T> predicate)
+        {
+            var Index = 0;
+            var Start = First;
+
+            while (Start != null)
+            {
+                if (predicate(Start.Value))
+                    return Index;
+                else
+                {
+                    Start = Start.Right;
+                    Index++;
+                }
+            }
+            return - 1;
+        }
+
+        public int FindIndex(Predicate<T> predicate, int Index)
+        {
+            var Start = First;
+            var Zähler = 0;
+
+            while (Start != null)
+            {
+                if (Zähler == Index)
+                {
+                    while (Start != null)
+                    {
+                        if (predicate(Start.Value))
+                            return Index;
+                        else
+                        {
+                            Start = Start.Right;
+                            Index++;
+                        }
+                    }
+                }
+                else
+                {
+                    Start = Start.Right;
+                    Zähler++;
+                }
+            }
+            return -1;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------
         public int IndexOf(T Wert)
         {
             int Index = 0;
@@ -93,7 +186,8 @@ namespace Datenstrukturen
             }
             return -1;
         }
-        //------------------------------------------------------------------------------------------------------------------------
+
+
         public int IndexOf(T Wert, int Index)
         {
             var Start = First;
@@ -147,7 +241,10 @@ namespace Datenstrukturen
                 if (Start.Value.Equals(Item))
                 {
                     Start.Left.Right = Start.Right;
-                    Start.Right.Left = Start.Left;
+                    if (Start.Right != null)
+                    {
+                        Start.Right.Left = Start.Left;
+                    }
                     break;
                 }
                 else
