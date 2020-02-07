@@ -276,24 +276,39 @@ namespace Datenstrukturen
             return -1;
         }
         //------------------------------------------------------------------------------------------------------------------------
-        public void Insert(int Index, T Item)
-        {
-            var Zähler = 0;
-            var Start = First;
+        //public void Insert(int Index, T Item)
+        //{
+        //    var Zähler = 0;
+        //    var Start = First;
+        //    T Cache;
 
-            while (Zähler <= Index)
-            {
-                if (Zähler == Index - 1)
-                {
-                    Add(Item);
-                }
-                else
-                {
-                    Start = Start.Right;
-                    Zähler++;
-                }
-            }
-        }
+        //    while (Zähler <= Index)
+        //    {
+        //        if (Zähler == Index - 1)
+        //        {
+        //            Cache = Start.Value;
+        //            Start.Value = Item;
+        //            Start = Start.Right;
+        //            Zähler++;
+
+        //        }
+        //        else if (Zähler < Index - 1)
+        //        {
+        //            Start = Start.Right;
+        //            Zähler++;
+        //        }
+        //        else
+        //        {
+        //            while (Start != null)
+        //            {
+        //                Cache = Start.Value;
+        //                Start.Right.Value = Cache;
+        //                Start = Start.Right;
+        //                Zähler++;
+        //            }
+        //        }
+        //    }
+        //}
 
         //------------------------------------------------------------------------------------------------------------------------
         public T[] ToArray()
