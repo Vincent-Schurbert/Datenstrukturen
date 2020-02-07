@@ -136,7 +136,7 @@ namespace Datenstrukturen
                     Index++;
                 }
             }
-            return - 1;
+            return -1;
         }
 
         public int FindIndex(Predicate<T> predicate, int Index)
@@ -166,6 +166,70 @@ namespace Datenstrukturen
                 }
             }
             return -1;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public T FindLast(Predicate<T> predicate)
+        {
+            var Ende = Last;
+
+            while (Ende != null)
+            {
+                if (predicate(Ende.Value))
+                    return Ende.Value;
+                Ende = Ende.Left;
+            }
+
+            return default;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public int FindLastIndex(Predicate<T> predicate)
+        {
+            var Ende = Last;
+            int Index = Count() - 1;
+
+            while (Ende != null)
+            {
+                if (predicate(Ende.Value))
+                    return Index;
+                else
+                    Index--;
+                Ende = Ende.Left;
+            }
+            return -1;
+        }
+
+        public int FindLastIndex(Predicate<T> predicate, int Index)
+        {
+            var Zähler = Count() - 1;
+            var Ende = Last;
+
+            while (Zähler >= Index && Ende != null)
+            {
+                if (predicate(Ende.Value))
+                {
+                    return Zähler;
+                }
+                else
+                {
+                    Zähler--;
+                    Ende = Ende.Left;
+                }
+            }
+            return -1;
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------
+        public void ForEach(Action<T> action)
+        {
+            var Start = First;
+
+            while (Start != null)
+            {
+                action(Start.Value);
+                Start = Start.Right;
+            }
         }
 
         //------------------------------------------------------------------------------------------------------------------------
@@ -211,6 +275,26 @@ namespace Datenstrukturen
             }
             return -1;
         }
+        //------------------------------------------------------------------------------------------------------------------------
+        public void Insert(int Index, T Item)
+        {
+            var Zähler = 0;
+            var Start = First;
+
+            while (Zähler <= Index)
+            {
+                if (Zähler == Index - 1)
+                {
+                    Add(Item);
+                }
+                else
+                {
+                    Start = Start.Right;
+                    Zähler++;
+                }
+            }
+        }
+
         //------------------------------------------------------------------------------------------------------------------------
         public T[] ToArray()
         {
