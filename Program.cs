@@ -145,15 +145,21 @@ namespace Datenstrukturen
             Console.WriteLine("Insert: ");
             BeispielListe.Display();
 
+            //--------------------------------------------------------------LastIndexOf-------------------------------------------------------
+
+            Console.WriteLine("----");
+            Console.WriteLine("LastIndexOf: ");
+            Console.WriteLine(BeispielListe.LastIndexOf(1));
+
+            Console.WriteLine("----");
+            Console.WriteLine("LastIndexOf mit 2 Parametern: ");
+            Console.WriteLine(BeispielListe.LastIndexOf(20, 17));
+
             //-----------CLEAR------------------------
-            
+
             BeispielListe.Clear();
             Console.WriteLine("----");
             Console.WriteLine("Count nach Clear: " + BeispielListe.Count());
-
-
-
-
         }
     }
 }

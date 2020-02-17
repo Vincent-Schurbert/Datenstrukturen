@@ -303,6 +303,47 @@ namespace Datenstrukturen
         }
 
         //------------------------------------------------------------------------------------------------------------------------
+        public int LastIndexOf(T Item)
+        {
+            int Index = Count() - 1;
+            var Start = Last;
+
+            while (Start != null)
+            {
+                if (Start.Value.Equals(Item))
+                {
+                    return Index;
+                }
+                else
+                {
+                    Start = Start.Left;
+                    Index--;
+                }
+            }
+            return Index;
+        }
+
+        public int LastIndexOf(T Item, int Begrenzer)
+        {
+            int Index = Count() - 1;
+            var Start = Last;
+
+            while (Start != null && Index >= Begrenzer)
+            {
+                if (Start.Value.Equals(Item))
+                {
+                    return Index;
+                }
+                else
+                {
+                    Start = Start.Left;
+                    Index--;
+                }
+            }
+            return -1;
+        }
+       
+        //------------------------------------------------------------------------------------------------------------------------
         public T[] ToArray()
         {
             T[] Ergebnis = new T[Count()];
