@@ -276,7 +276,7 @@ namespace Datenstrukturen
             return -1;
         }
         //------------------------------------------------------------------------------------------------------------------------
-        public void Insert(int Index, T Item)
+        public void Insert(int Index, T Item)// Zeiger vor dem Eingefügten stimmt nicht mehr oder etwas stimmt beim LastIndexOf nicht
         {
             int Zähler = 0;
             var Start = First;
@@ -285,9 +285,7 @@ namespace Datenstrukturen
             {
                 if (Zähler == Index - 1)
                 {
-                    var Vorgänger = Start;
-                    var Nachfolger = Start.Right;
-                    var neuAdd = new Knoten<T>(Vorgänger, Item, Nachfolger);
+                    var neuAdd = new Knoten<T>(Start.Left, Item, Start.Right);//eventuell durch Start.Left anstelle von Start gefixed?
 
                     Start.Right = neuAdd;
                     Start.Left = neuAdd;
@@ -308,7 +306,7 @@ namespace Datenstrukturen
             int Index = Count() - 1;
             var Start = Last;
 
-            while (Start != null)
+            while (Start != null )
             {
                 if (Start.Value.Equals(Item))
                 {
@@ -320,7 +318,7 @@ namespace Datenstrukturen
                     Index--;
                 }
             }
-            return Index;
+            return - 1;
         }
 
         public int LastIndexOf(T Item, int Begrenzer)
@@ -443,6 +441,20 @@ namespace Datenstrukturen
                 }
             }
         }
+        //------------------------------------------------------------------------------------------------------------------------
+        //public void Reverse()
+        //{
+        //    var Start = First;
+
+        //    while (Start != null)
+        //    {
+        //        var Cache = First.Left;
+        //        First.Left = Start.Right;
+        //        First.Right = Start.Left;
+
+        //        Start = Cache;
+        //    }
+        //}
         //------------------------------------------------------------------------------------------------------------------------
 
         public void Display()

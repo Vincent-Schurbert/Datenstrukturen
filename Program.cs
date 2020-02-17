@@ -149,7 +149,7 @@ namespace Datenstrukturen
 
             Console.WriteLine("----");
             Console.WriteLine("LastIndexOf: ");
-            Console.WriteLine(BeispielListe.LastIndexOf(1));
+            Console.WriteLine(BeispielListe.LastIndexOf(3));
 
             Console.WriteLine("----");
             Console.WriteLine("LastIndexOf mit 2 Parametern: ");
@@ -164,6 +164,13 @@ namespace Datenstrukturen
             Console.WriteLine("----");
             Console.WriteLine("Liste nach RemoveAll > 10: ");
             BeispielListe.Display();
+
+            //--------------------------------------------------------------Reverse-------------------------------------------------------------
+
+            //Console.WriteLine("----");
+            //Console.WriteLine("Reverse: ");
+            //BeispielListe.Reverse();
+            //BeispielListe.Display();
 
             //--------------------------------------------------------------CLEAR-------------------------------------------------------------
 
