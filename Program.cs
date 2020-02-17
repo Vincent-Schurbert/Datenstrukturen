@@ -155,7 +155,17 @@ namespace Datenstrukturen
             Console.WriteLine("LastIndexOf mit 2 Parametern: ");
             Console.WriteLine(BeispielListe.LastIndexOf(20, 17));
 
-            //-----------CLEAR------------------------
+            //--------------------------------------------------------------RemoveAll-------------------------------------------------------------
+
+            Console.WriteLine("----");
+            Console.WriteLine("RemoveAll: ");
+            Console.WriteLine(BeispielListe.RemoveAll(predicate));
+
+            Console.WriteLine("----");
+            Console.WriteLine("Liste nach RemoveAll > 10: ");
+            BeispielListe.Display();
+
+            //--------------------------------------------------------------CLEAR-------------------------------------------------------------
 
             BeispielListe.Clear();
             Console.WriteLine("----");

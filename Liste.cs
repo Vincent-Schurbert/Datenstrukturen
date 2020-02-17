@@ -385,6 +385,31 @@ namespace Datenstrukturen
             }
         }
         //------------------------------------------------------------------------------------------------------------------------
+        public int RemoveAll(Predicate<T> predicate)
+        {
+            var Start = First;
+            int Counter = 0;
+
+            while (Start != null)
+            {
+                if (predicate(Start.Value))
+                {
+                    Start.Left.Right = Start.Right;
+                    if (Start.Right != null)
+                    {
+                        Start.Right.Left = Start.Left;
+                    }
+                    Start = Start.Right;
+                    Counter++;
+                }
+                else
+                {
+                    Start = Start.Right;
+                }
+            }
+            return Counter;
+        }
+        //------------------------------------------------------------------------------------------------------------------------
         public void RemoveAt(int Index)
         {
             var Counter = 0;
