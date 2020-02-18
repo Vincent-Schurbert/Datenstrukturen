@@ -61,79 +61,80 @@ namespace Datenstrukturen
             AddInteger.Add(19);
             AddInteger.Add(20);
             AddInteger.Add(7);
+            AddInteger.Add(4);
 
-            //Liste<string> AddStrings = new Liste<string>();
-            //AddStrings.Add("Hi");
-            //AddStrings.Add("das");
-            //AddStrings.Add("ist");
-            //AddStrings.Add("ein");
-            //AddStrings.Add("Test");
-            //-------------------------------------------------------AddRange-----------------------------------------------------------------
-            
+            // //Liste<string> AddStrings = new Liste<string>();
+            // //AddStrings.Add("Hi");
+            // //AddStrings.Add("das");
+            // //AddStrings.Add("ist");
+            // //AddStrings.Add("ein");
+            // //AddStrings.Add("Test");
+            // //-------------------------------------------------------AddRange---------------------------------------------------------------- -
+
             BeispielListe.AddRange(AddInteger);
-            //BeispielListe.AddRange(AddStrings);
+           //// BeispielListe.AddRange(AddStrings);
 
-            //-------------------------------------------------------Remove--------------------------------------------------------------
-           
+           ////-------------------------------------------------------Remove--------------------------------------------------------------
+
             BeispielListe.Remove(12);
-            BeispielListe.RemoveAt(0); 
+            BeispielListe.RemoveAt(0);
             BeispielListe.Display();
 
-            //-----------------------------------------------Count-------------------------------------------------------------------------
-            
+            // //-----------------------------------------------Count-------------------------------------------------------------------------
+
             Console.WriteLine("-----");
             Console.WriteLine("Count: " + BeispielListe.Count());
 
             //-----------------------------------------------Contains-------------------------------------------------------------------------
-           
+
             Console.WriteLine("-----");
             Console.WriteLine("Contains: " + BeispielListe.Contains(20));
 
             //--------------------------------------------------IndexOf----------------------------------------------------------------------
-           
+
             Console.WriteLine("----");
             Console.WriteLine("IndexOf: " + BeispielListe.IndexOf(1));
             Console.WriteLine("IndexOf mit 2 Parametern: " + BeispielListe.IndexOf(1, 8));
 
             //--------------------------------------------------ToArray----------------------------------------------------------------------
-           
+
             BeispielListe.ToArray();
 
             //--------------------------------------------------------------Exists-------------------------------------------------------
-           
+
             Console.WriteLine("----");
             Console.WriteLine("Exists: " + BeispielListe.Exists(predicate));
 
             //--------------------------------------------------------------Find-------------------------------------------------------
-           
+
             Console.WriteLine("----");
             Console.WriteLine("Find: " + BeispielListe.Find(predicate));
 
             //--------------------------------------------------------------FindAll-------------------------------------------------------
-            
+
             Console.WriteLine("----");
             Console.WriteLine("FindAll: ");
             BeispielListe.FindAll(predicate);
 
             //--------------------------------------------------------------FindIndex-------------------------------------------------------
-            
+
             Console.WriteLine("----");
             Console.WriteLine("FindIndex: " + BeispielListe.FindIndex(predicate));
             Console.WriteLine("FindIndex mit zwei Parametern: " + BeispielListe.FindIndex(predicate, 15));
 
             //--------------------------------------------------------------FindLast-------------------------------------------------------
-            
+
             Console.WriteLine("----");
             Console.WriteLine("FindLast: " + BeispielListe.FindLast(predicate));
 
             //--------------------------------------------------------------FindLastIndex-------------------------------------------------------
-            
+
             Console.WriteLine("----");
             Console.WriteLine("FindLastIndex: " + BeispielListe.FindLastIndex(predicate));
             Console.WriteLine("FindLastIndex mit zwei Parametern: " + BeispielListe.FindLastIndex(predicate, 21));
 
             //--------------------------------------------------------------ForEach-------------------------------------------------------
-           
+
             Console.WriteLine("----");
             Console.WriteLine("Durch ForEach verdoppelte Werte: ");
             BeispielListe.ForEach(action);
@@ -158,19 +159,25 @@ namespace Datenstrukturen
             //--------------------------------------------------------------RemoveAll-------------------------------------------------------------
 
             Console.WriteLine("----");
-            Console.WriteLine("RemoveAll: ");
-            Console.WriteLine(BeispielListe.RemoveAll(predicate));
+            Console.WriteLine("removeall: ");
+            //Console.WriteLine(BeispielListe.RemoveAll(predicate));
 
             Console.WriteLine("----");
             Console.WriteLine("Liste nach RemoveAll > 10: ");
             BeispielListe.Display();
 
-            //--------------------------------------------------------------Reverse-------------------------------------------------------------
+            //////--------------------------------------------------------------Reverse-------------------------------------------------------------
 
-            //Console.WriteLine("----");
-            //Console.WriteLine("Reverse: ");
-            //BeispielListe.Reverse();
+            Console.WriteLine("----");
+            Console.WriteLine("Reverse: ");
+           // BeispielListe.Reverse();
             //BeispielListe.Display();
+            Console.WriteLine("----");
+            Console.WriteLine("Reverse2: ");
+            BeispielListe.Reverse2();
+            BeispielListe.Display();
+
+
 
             //--------------------------------------------------------------CLEAR-------------------------------------------------------------
 

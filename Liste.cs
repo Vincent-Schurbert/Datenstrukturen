@@ -442,19 +442,45 @@ namespace Datenstrukturen
             }
         }
         //------------------------------------------------------------------------------------------------------------------------
-        //public void Reverse()
-        //{
-        //    var Start = First;
+        public void Reverse()
+        {
+            var Start = First;
 
-        //    while (Start != null)
-        //    {
-        //        var Cache = First.Left;
-        //        First.Left = Start.Right;
-        //        First.Right = Start.Left;
+            while (Start != null)
+            {
+                var Vorgänger = Start.Left;
+                var Nachfolger = Start.Right;
 
-        //        Start = Cache;
-        //    }
-        //}
+                Start.Left = Nachfolger;
+                Start.Right = Vorgänger;
+
+                Start = Start.Left;
+            }
+            var Zwischenspeicher = First;
+            First = Last;
+            Last = Zwischenspeicher;
+        }
+
+        public void Reverse2()
+        {
+            var Start = First;
+            var Ende = Last;
+
+            for (int i = 0; i < Count() / 2; i++)
+            {
+                var Zwischenspeicher = Start.Value;
+                Start.Value = Ende.Value;
+                Ende.Value = Zwischenspeicher;
+
+                Start = Start.Right;
+                Ende = Ende.Left;
+            }
+        }
+        //------------------------------------------------------------------------------------------------------------------------
+        public void Sort(Comparison<T> comparison)
+        {
+
+        }
         //------------------------------------------------------------------------------------------------------------------------
 
         public void Display()
