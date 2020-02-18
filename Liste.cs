@@ -278,25 +278,35 @@ namespace Datenstrukturen
         //------------------------------------------------------------------------------------------------------------------------
         public void Insert(int Index, T Item)// Zeiger vor dem Eingefügten stimmt nicht mehr oder etwas stimmt beim LastIndexOf nicht
         {
-            int Zähler = 0;
             var Start = First;
 
-            while (Start != null && Zähler <= Index - 1)
+            for (int i = 0; i < Index; i++)
             {
-                if (Zähler == Index - 1)
-                {
-                    var neuAdd = new Knoten<T>(Start.Left, Item, Start.Right);//eventuell durch Start.Left anstelle von Start gefixed?
+                Start = Start.Right;
+            }
 
-                    Start.Right = neuAdd;
-                    Start.Left = neuAdd;
+            if (Start == First)
+            {
+                var neuAdd = new Knoten<T>(null, Item, Start);
 
-                    Zähler++;
-                }
-                else
-                {
-                    Start = Start.Right;
-                    Zähler++;
-                }
+                Start.Left = neuAdd;
+                First = neuAdd;
+
+            }
+            else if (Start == Last)
+            {
+                var neuAdd = new Knoten<T>(Start, Item, null);
+
+                Start.Right = neuAdd;
+                Last = neuAdd;
+
+            }
+            else 
+            {
+                var neuAdd = new Knoten<T>(Start.Left, Item, Start);
+
+                Start.Left.Right = neuAdd;
+                Start.Left = neuAdd;
             }
         }
 
@@ -418,14 +428,12 @@ namespace Datenstrukturen
                 First = First.Right;
                 return;
             }
-
-            if (Index == Count() - 1)
+            else if (Index == Count() - 1)
             {
                 Last = Last.Left;
                 Last.Right = null;
             }
-
-            if (Index < Count() - 1)
+            else if (Index < Count() - 1)
             {
                 while (Counter <= Index)
                 {
@@ -477,10 +485,25 @@ namespace Datenstrukturen
             }
         }
         //------------------------------------------------------------------------------------------------------------------------
-        public void Sort(Comparison<T> comparison)
+        public void Sort(Comparison<T> comparison) 
         {
+            for (int i = 0; i < Count(); i++)
+            {
+                var Knoten = First;
 
+                while (Knoten.Right != null)
+                {
+                    if (comparison(Knoten.Value, Knoten.Right.Value) == -1)
+                    {
+                        var Zwischenspeicher = Knoten.Value;
+                        Knoten.Value = Knoten.Right.Value;
+                        Knoten.Right.Value = Zwischenspeicher;
+                    }
+                    Knoten = Knoten.Right;
+                }
+            }
         }
+
         //------------------------------------------------------------------------------------------------------------------------
 
         public void Display()

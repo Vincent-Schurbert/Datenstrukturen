@@ -6,6 +6,18 @@ namespace Datenstrukturen
 {
     class Program
     {
+        public int ZweiZahlenVergleichen(int Zahl1, int Zahl2)
+        {
+            if (Zahl1 > Zahl2)
+            {
+                return 1;
+            }
+            else if (Zahl1 == Zahl2)
+            {
+                return 0;
+            }
+            else return -1;
+        }
         public bool Larger(int Zahl)
         {
             if (Zahl > 10)
@@ -33,6 +45,9 @@ namespace Datenstrukturen
             Action<int> action;
             action = p.Verdopple;
 
+            Comparison<int> comparison;
+            comparison = p.ZweiZahlenVergleichen;
+
             //--------------------------------------------------------------Add-------------------------------------------------------
             Liste<int> BeispielListe = new Liste<int>();
             BeispielListe.Add(0);
@@ -46,7 +61,6 @@ namespace Datenstrukturen
             BeispielListe.Add(8);
             BeispielListe.Add(9);
             BeispielListe.Add(10);
-            BeispielListe.Add(1);
             BeispielListe.Add(11);
             BeispielListe.Add(12);
 
@@ -63,6 +77,9 @@ namespace Datenstrukturen
             AddInteger.Add(7);
             AddInteger.Add(4);
 
+            //BeispielListe.Sort(comparison);
+            //BeispielListe.Display();
+
             // //Liste<string> AddStrings = new Liste<string>();
             // //AddStrings.Add("Hi");
             // //AddStrings.Add("das");
@@ -71,16 +88,16 @@ namespace Datenstrukturen
             // //AddStrings.Add("Test");
             // //-------------------------------------------------------AddRange---------------------------------------------------------------- -
 
-            BeispielListe.AddRange(AddInteger);
-           //// BeispielListe.AddRange(AddStrings);
+             BeispielListe.AddRange(AddInteger);
+            //// BeispielListe.AddRange(AddStrings);
 
-           ////-------------------------------------------------------Remove--------------------------------------------------------------
+            ////-------------------------------------------------------Remove--------------------------------------------------------------
 
             BeispielListe.Remove(12);
             BeispielListe.RemoveAt(0);
             BeispielListe.Display();
 
-            // //-----------------------------------------------Count-------------------------------------------------------------------------
+            // // //-----------------------------------------------Count-------------------------------------------------------------------------
 
             Console.WriteLine("-----");
             Console.WriteLine("Count: " + BeispielListe.Count());
@@ -156,34 +173,35 @@ namespace Datenstrukturen
             Console.WriteLine("LastIndexOf mit 2 Parametern: ");
             Console.WriteLine(BeispielListe.LastIndexOf(20, 17));
 
-            //--------------------------------------------------------------RemoveAll-------------------------------------------------------------
+            // //--------------------------------------------------------------RemoveAll-------------------------------------------------------------
 
             Console.WriteLine("----");
             Console.WriteLine("removeall: ");
-            //Console.WriteLine(BeispielListe.RemoveAll(predicate));
+            Console.WriteLine(BeispielListe.RemoveAll(predicate));
 
             Console.WriteLine("----");
             Console.WriteLine("Liste nach RemoveAll > 10: ");
             BeispielListe.Display();
 
-            //////--------------------------------------------------------------Reverse-------------------------------------------------------------
+            // //////--------------------------------------------------------------Reverse-------------------------------------------------------------
 
-            Console.WriteLine("----");
-            Console.WriteLine("Reverse: ");
-           // BeispielListe.Reverse();
-            //BeispielListe.Display();
-            Console.WriteLine("----");
-            Console.WriteLine("Reverse2: ");
-            BeispielListe.Reverse2();
-            BeispielListe.Display();
+            // Console.WriteLine("----");
+            // Console.WriteLine("Reverse: ");
+            //// BeispielListe.Reverse();
+            // //BeispielListe.Display();
+            // Console.WriteLine("----");
+            // Console.WriteLine("Reverse2: ");
+            // BeispielListe.Reverse2();
+            // BeispielListe.Display();
 
 
 
-            //--------------------------------------------------------------CLEAR-------------------------------------------------------------
 
-            BeispielListe.Clear();
-            Console.WriteLine("----");
-            Console.WriteLine("Count nach Clear: " + BeispielListe.Count());
+            // //--------------------------------------------------------------CLEAR-------------------------------------------------------------
+
+            // BeispielListe.Clear();
+            // Console.WriteLine("----");
+            // Console.WriteLine("Count nach Clear: " + BeispielListe.Count());
         }
     }
 }
