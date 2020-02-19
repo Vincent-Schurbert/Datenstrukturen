@@ -276,7 +276,7 @@ namespace Datenstrukturen
             return -1;
         }
         //------------------------------------------------------------------------------------------------------------------------
-        public void Insert(int Index, T Item)// Zeiger vor dem Eingefügten stimmt nicht mehr oder etwas stimmt beim LastIndexOf nicht
+        public void Insert(int Index, T Item)
         {
             var Start = First;
 
@@ -291,7 +291,6 @@ namespace Datenstrukturen
 
                 Start.Left = neuAdd;
                 First = neuAdd;
-
             }
             else if (Start == Last)
             {
@@ -299,7 +298,6 @@ namespace Datenstrukturen
 
                 Start.Right = neuAdd;
                 Last = neuAdd;
-
             }
             else 
             {
@@ -505,7 +503,6 @@ namespace Datenstrukturen
         }
 
         //------------------------------------------------------------------------------------------------------------------------
-
         public void Display()
         {
             Knoten<T> Start = First;
@@ -521,6 +518,5 @@ namespace Datenstrukturen
                 Start = Start.Right;
             }
         }
-
     }
 }

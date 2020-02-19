@@ -45,6 +45,8 @@ namespace Datenstrukturen
             Action<int> action;
             action = p.Verdopple;
 
+            //--------------------------------------------------------------Comparison-------------------------------------------------------
+
             Comparison<int> comparison;
             comparison = p.ZweiZahlenVergleichen;
 
@@ -77,8 +79,6 @@ namespace Datenstrukturen
             AddInteger.Add(7);
             AddInteger.Add(4);
 
-            //BeispielListe.Sort(comparison);
-            //BeispielListe.Display();
 
             // //Liste<string> AddStrings = new Liste<string>();
             // //AddStrings.Add("Hi");
@@ -86,9 +86,15 @@ namespace Datenstrukturen
             // //AddStrings.Add("ist");
             // //AddStrings.Add("ein");
             // //AddStrings.Add("Test");
-            // //-------------------------------------------------------AddRange---------------------------------------------------------------- -
 
-             BeispielListe.AddRange(AddInteger);
+            // //-------------------------------------------------------Sort-----------------------------------------------------------------
+
+            BeispielListe.Sort(comparison);
+            BeispielListe.Display();
+
+            // //-------------------------------------------------------AddRange-----------------------------------------------------------------
+
+            BeispielListe.AddRange(AddInteger);
             //// BeispielListe.AddRange(AddStrings);
 
             ////-------------------------------------------------------Remove--------------------------------------------------------------
@@ -185,17 +191,14 @@ namespace Datenstrukturen
 
             // //////--------------------------------------------------------------Reverse-------------------------------------------------------------
 
-            // Console.WriteLine("----");
-            // Console.WriteLine("Reverse: ");
-            //// BeispielListe.Reverse();
-            // //BeispielListe.Display();
-            // Console.WriteLine("----");
-            // Console.WriteLine("Reverse2: ");
-            // BeispielListe.Reverse2();
-            // BeispielListe.Display();
-
-
-
+            Console.WriteLine("----");
+            Console.WriteLine("Reverse: ");
+            BeispielListe.Reverse();
+            BeispielListe.Display();
+            Console.WriteLine("----");
+            Console.WriteLine("Reverse2: ");
+            BeispielListe.Reverse2();
+            BeispielListe.Display();
 
             // //--------------------------------------------------------------CLEAR-------------------------------------------------------------
 
